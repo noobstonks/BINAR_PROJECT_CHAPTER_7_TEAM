@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended:false}))
 app.set('view engine', 'ejs');
 
 app.get ('/', (req,res)=>{
-    res.render('home')
+    res.status(200).render('home')
 })
 
 
@@ -36,7 +36,7 @@ app.get ('/', (req,res)=>{
 // })
 
 app.get('/login', (req,res)=>{
-    res.render('login')
+    res.status(200).render('login')
 })
 
 app.post('/login', (req,res)=>{
@@ -44,7 +44,7 @@ app.post('/login', (req,res)=>{
     const password = req.body.password;
     for (let check in data) {
         if (data[check].usernamejson === username && data[check].passwordjson === password ){
-            res.redirect('/')
+            res.status(304).redirect('/')
         }
         else {
             res.send("You're not authorized")
