@@ -5,11 +5,14 @@
 const express = require ('express');
 const ejs = require('ejs')
 const app = express();
+let data = require('./database.json')
+
 
 const port = 2021;
 
 app.use(express.static(__dirname + '/public'));
 
+app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.set('view engine', 'ejs');
@@ -18,9 +21,14 @@ app.get ('/', (req,res)=>{
     res.render('home')
 })
 
-// app.post('/', (req,res)=>{
+
+// app.get('/login', (req,res)=>{
+//     res.render('login')
+// })
+
+// app.post('/login', (req,res)=>{
 //     if(req.body.username.trim() === "andro" && req.body.password.trim() === "test123"){
-//         res.render('home')
+//         res.redirect('/')
 //     }
 //     else {
 //         res.send("You're not authorized")
@@ -32,13 +40,18 @@ app.get('/login', (req,res)=>{
 })
 
 app.post('/login', (req,res)=>{
-    if(req.body.username.trim() === "andro" && req.body.password.trim() === "test123"){
-        res.redirect('/')
-    }
-    else {
-        res.send("You're not authorized")
+    const username = req.body.username;
+    const password = req.body.password;
+    for (let check in data) {
+        if (data[check].usernamejson === username && data[check].passwordjson === password ){
+            res.redirect('/')
+        }
+        else {
+            res.send("You're not authorized")
+        }
     }
 })
+
 
 app.get('/game', (req,res)=>{
     res.render('game')
