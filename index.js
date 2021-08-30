@@ -39,16 +39,14 @@ app.get('/login', (req,res)=>{
     res.status(200).render('login')
 })
 
-app.post('/login', (req,res)=>{
+app.post('/login', (req,res)=> {
     const username = req.body.username;
     const password = req.body.password;
-    for (let check in data) {
-        if (data[check].usernamejson === username && data[check].passwordjson === password ){
-            res.status(304).redirect('/')
-        }
-        else {
-            res.send("You're not authorized")
-        }
+    if (data.find(o=> o.usernamejson === username && o.passwordjson === password )) {
+        res.redirect('/')
+    }
+    else {
+        res.send("youre not authorized")
     }
 })
 
