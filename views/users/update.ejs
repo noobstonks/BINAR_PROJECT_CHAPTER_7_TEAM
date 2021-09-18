@@ -26,27 +26,27 @@
               <h3 class="mb-0">UPDATE User Information</h3>
             </div>
             <div class="card-body">
-              <form method="POST" action="/users/update/<%= users.id %>">
+              <form method="POST" action="/users/update/<%= user.id %>">
                 <fieldset>
                   <label class="mb-0" for="username">Username</label>
                   <div class="row mb-1">
                     <div class="col-lg-12">
-                      <input class="form-control" name="username"  type="text" value="<%= users.username %>">
+                      <input class="form-control" name="username"  type="text" value="<%= user.username %>">
                     </div>
                   </div>
                  <label class="mb-0" for="password">Password</label>
                   <div class="row mb-1">
                     <div class="col-lg-12">
-                      <input class="form-control"  name="password" required="" type="text" value="<%= users.password %>">
+                      <input class="form-control"  name="password" required="" type="text" value="<%= user.password %>">
                     </div>
                   </div>
                 <label class="mb-0" for="nama">nama(biodata)</label>
                   <div class="row mb-1">
                     <div class="col-lg-12">
-                      <textarea class="form-control"  name="nama" required="" rows="6" value="<%= users.nama %>"></textarea>
+                      <input class="form-control"  name="nama" required="" rows="6" value="<%= user_bio.nama %>"></input>
                     </div>
                   </div>
-                <button class="btn btn-secondary btn-lg float-right" type="submit">Create User</button>
+                <button class="btn btn-secondary btn-lg float-right" type="submit">Update User</button>
                 </fieldset>
               </form>
             </div>

@@ -44,6 +44,7 @@ app.get('/game', (req,res)=>{
     res.render('game')
 })
 
+//database users
 
 app.get ('/users', (req,res)=>{
     user_game.findAll()
@@ -58,43 +59,60 @@ app.get ('/users/create', (req,res)=>{
     res.render('users/create')
 })
 
-app.post('/users', (req,res)=>{
-    user_game.create({
-        username: req.body.username,
-        password: req.body.password
-    })
-    user_game_biodata.create({
-        nama: req.body.nama
-    })
-    .then(()=>{
-        res.send('data user berhasil dibuat')
-    })
-})
+ app.post('/users', (req,res)=>{
+     user_game.create({
+         username: req.body.username,
+         password: req.body.password,
+     })
+
+     .then((user)=>{
+         user_game_biodata.create({
+             nama: req.body.nama,
+             user_id: user.id
+         })
+         res.redirect('/users')
+     })
+ })
 
 app.get('/users/:id', (req,res)=>{
     user_game.findOne({
         where: {id: req.params.id}
     })
 
-    .then(user=>{ 
-        res.render ('users/detail', {
-            user
+    .then((user)=>{ 
+        user_game_biodata.findOne({
+            where: {user_id: user.id}
         })
+        .then((user_bio)=>{
+            res.render ('users/detail', {
+                user, user_bio
+            })
+        })
+
     })
 })
 
 app.get('/users/delete/:id', (req,res)=>{
-    user_game.destroy({ where: {id: req.params.id}})
+    user_game_biodata.destroy({ where: {user_id: req.params.id}})
     .then(()=>{
-        res.send('data user berhasil dihapus')
+        user_game.destroy({ where: {id: req.params.id} })
+        // res.send('data user berhasil dihapus')
+        res.redirect('/users')
     })
 })
 
 app.get('/users/update/:id', (req,res)=>{
-    user_game.findOne({where: {id: req.params.id}})
-    .then(user=>{ 
-        res.render ('users/update', {
-            user
+    user_game.findOne({
+        where: {id: req.params.id}
+    })
+    .then((user)=>{ 
+        user_game_biodata.findOne({
+            where: {user_id: user.id}
+        })
+        .then((user_bio)=>{
+            res.render('users/update', {
+                user, user_bio
+            })
         })
     })
 })
@@ -103,17 +121,15 @@ app.post('/users/update/:id', (req,res)=>{
     user_game.update({
         username: req.body.username,
         password: req.body.password
-    },{where: {id:req.params.id}
+    }, {where: {id:req.params.id}
 })
+.then((user)=>{
     user_game_biodata.update({
-        nama: req.body.nama
-    },{where: {id:req.params.id}
-})
-    .then(()=>{
-        res.send('data user berhasil di update')
+        nama: req.body.nama,
+    }, {where: {user_id: req.params.id}})
+    res.redirect('/users')
     })
 })
-
 
 
 app.listen(port, ()=>{
