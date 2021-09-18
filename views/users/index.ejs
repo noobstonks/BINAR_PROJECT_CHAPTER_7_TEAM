@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="/assets/styling.css">
 </head>
     <body>
-      
-
        <div class="table-responsive-sm">
         <table class="table table-hover">
           <thead>
@@ -31,18 +29,18 @@
               <th>username</th>
               <th>password</th>
               <th class="d-print-none">
-                <a class="btn btn-sm btn-success" href="/create">Add</a>
+                <a class="btn btn-sm btn-success" href="/users/create">Add</a>
               </th>
             </tr>
           </thead>
           <tbody>
-            <% user.forEach ((i)=>  { %>
+            <% users.forEach ((i)=>  { %>
               <tr>
                 <td><%= i.id %></td>
                 <td><%= i.username %></td>
                 <td><%= i.password %></td>
                 <td class="d-print-none">
-                  <a class="btn btn-sm btn-primary" href="/users/<%= i.id %>">Edit</a>
+                  <a class="btn btn-sm btn-primary" href="/users/<%= i.id %>">Detail</a>
                   <a class="btn btn-sm btn-warning" href="/users/update/<%= i.id %>">Update</a>
                   <a class="btn btn-sm btn-danger" href="/users/delete/<%= i.id %>">Delete</a>
                 </td>
@@ -52,8 +50,6 @@
         </table>
       </div>
     </body>
-
-
 
 
 </html>

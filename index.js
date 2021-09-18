@@ -5,7 +5,7 @@ const ejs = require('ejs')
 const app = express();
 let data = require('./database.json')
 
-const { user_game, user_game_biodata } = require ('./models');
+const { user_game, user_game_biodata, user_game_history } = require ('./models');
 
 app.use(express.urlencoded({extended:false}))
 
@@ -47,9 +47,9 @@ app.get('/game', (req,res)=>{
 
 app.get ('/users', (req,res)=>{
     user_game.findAll()
-    .then((user)=>{
+    .then((users)=>{
         res.render ('users/index', {
-            user
+            users
         })
     })
 })
@@ -75,9 +75,9 @@ app.get('/users/:id', (req,res)=>{
     user_game.findOne({
         where: {id: req.params.id}
     })
-    .then(users=>{ 
+    .then(user=>{ 
         res.render ('users/detail', {
-            users
+            user
         })
     })
 })
@@ -91,9 +91,9 @@ app.get('/users/delete/:id', (req,res)=>{
 
 app.get('/users/update/:id', (req,res)=>{
     user_game.findOne({where: {id: req.params.id}})
-    .then(users=>{ 
+    .then(user=>{ 
         res.render ('users/update', {
-            users
+            user
         })
     })
 })
