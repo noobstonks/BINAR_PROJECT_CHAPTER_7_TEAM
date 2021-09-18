@@ -75,6 +75,7 @@ app.get('/users/:id', (req,res)=>{
     user_game.findOne({
         where: {id: req.params.id}
     })
+
     .then(user=>{ 
         res.render ('users/detail', {
             user
