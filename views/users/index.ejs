@@ -21,13 +21,39 @@
     <link rel="stylesheet" href="/assets/styling.css">
 </head>
     <body>
-        <% user_game.forEach ((i)=> { %>
-            <div>
-                <h1><%= i.id %></h1>
+      
 
-                <p><%= i.username %></p>
-                <a href = "/users/<%= i.id %>">baca lebih lanjut!</a>
-            </div>
-       <% }) %>
+       <div class="table-responsive-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>username</th>
+              <th>password</th>
+              <th class="d-print-none">
+                <a class="btn btn-sm btn-success" href="/create">Add</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% user.forEach ((i)=>  { %>
+              <tr>
+                <td><%= i.id %></td>
+                <td><%= i.username %></td>
+                <td><%= i.password %></td>
+                <td class="d-print-none">
+                  <a class="btn btn-sm btn-primary" href="/users/<%= i.id %>">Edit</a>
+                  <a class="btn btn-sm btn-warning" href="/users/update/<%= i.id %>">Update</a>
+                  <a class="btn btn-sm btn-danger" href="/users/delete/<%= i.id %>">Delete</a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
     </body>
+
+
+
+
 </html>
