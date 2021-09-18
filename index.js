@@ -4,7 +4,9 @@ const express = require ('express');
 const ejs = require('ejs')
 const app = express();
 let data = require('./database.json')
-const { user_games, user_biodata, user_histories } = require ('./models');
+
+const { user_game } = require ('./models');
+
 app.use(express.urlencoded({extended:false}))
 
 
@@ -42,8 +44,17 @@ app.get('/game', (req,res)=>{
     res.render('game')
 })
 
-app.get('/users', (req,res)=>{
-    res.render('users/index')
+// app.get('/users', (req,res)=>{
+//     res.render('users/index')
+// })
+
+app.get ('/users', (req,res)=>{
+    user_game.findAll()
+    .then((user)=>{
+        res.render ('users/index', {
+            user
+        })
+    })
 })
 
 app.listen(port, ()=>{
