@@ -10,7 +10,7 @@ const { user_game, user_game_biodata, user_game_history } = require ('./models')
 app.use(express.urlencoded({extended:false}))
 
 
-const port = 2021;
+const port = 3000;
 
 app.use(express.static(__dirname + '/public'));
 
