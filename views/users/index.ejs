@@ -30,6 +30,7 @@
               <th>id</th>
               <th>username</th>
               <th>password</th>
+              <th>role</th>
               <th class="d-print-none">
                 <a class="btn btn-sm btn-success" href="/users/create">Add</a>
               </th>
@@ -41,6 +42,7 @@
                 <td><%= i.id %></td>
                 <td><%= i.username %></td>
                 <td><%= i.password %></td>
+                <td><%= i.role %></td>
                 <td class="d-print-none">
                   <a class="btn btn-sm btn-primary" href="/users/<%= i.id %>">Detail</a>
                   <a class="btn btn-sm btn-warning" href="/users/update/<%= i.id %>">Update</a>

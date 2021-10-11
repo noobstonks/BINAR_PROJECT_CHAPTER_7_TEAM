@@ -25,6 +25,11 @@ let papantengah = document.getElementById("papantengah")
 
 
 //apabila player memilih batu
+// let pilih_batu = async function() {
+//   const ambilbatu = await pickRock();
+//   const compare = await rockPaperScissors();
+
+// }
 
 document.getElementById("rock").onclick = function() {pickRock(), rockPaperScissors()};
 function pickRock() {

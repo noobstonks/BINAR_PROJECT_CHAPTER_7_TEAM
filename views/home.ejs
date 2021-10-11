@@ -1,64 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-   ></script>
-
-   <script
-   src="/assets/bootstrap.min.js"></script>
-
-    <link
-    href="/assets/bootstrap.min.css"
-    type="text/css"
-    rel="stylesheet"
-    >
-    <link rel="stylesheet" href="/assets/styling.css">
-</head>
-
+    <%- include ("partials/head", { title: "Landing Page", href: "/assets/styling.css" }); %>
 
 <body>
 
     <section class="hero">
-        <div class="headernavbar">
-            <nav class="navbar navbar-expand-lg headernavbar navbar-dark pl-5">
-                <a class="navbar-brand" href="#">LOGO</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav firstnavigation mx-auto">
-                    <li class="nav-item px-3">
-                        <a class="nav-link" href="#">HOME</a>
-                      </li>
-                    <li class="nav-item px-3">
-                      <a class="nav-link" href="#">WORK</a>
-                    </li>
-                    <li class="nav-item px-3">
-                        <a class="nav-link" href="#">CONTACT</a>
-                      </li>
-                      <li class="nav-item px-3">
-                        <a class="nav-link" href="#">ABOUT ME</a>
-                      </li>
-                  </ul>
-                  <ul class="navbar-nav signuplogin ml-auto mr-5">
-                    <li class="nav-item px-3">
-                        <a class="nav-link" href="#">SIGN UP</a>
-                      </li>
-                      <li class="nav-item px-3">
-                        <a class="nav-link" href="/login">LOGIN</a>
-                      </li>
-                  </ul>
-                
-                </div>
-              </nav>
-            </div>
+        <%- include ("partials/navbar"); %>
         <div class= "hero-master">
             <div class="hero-title ">
                     <h1 class="display-4">PLAY TRADITIONAL GAME</h1>

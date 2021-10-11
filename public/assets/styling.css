@@ -18,15 +18,27 @@ body {
 .navbar-brand {
     padding-left: 5%;
     color:white;
-    
 }
 
-.firstnavigation {
+.navbar-brand:hover {
     color:white;
+}
+
+.nav-link {
+    color:white;
+}
+
+.nav-link:hover {
+    color:lightgray;
 }
 
 .signuplogin{
     color:white;
+}
+
+.navbar-toggler {
+    border-color: black;
+    background-color: rgba(0,0,0,.6);
 }
 
  /* hero class */
